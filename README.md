@@ -1,1 +1,1 @@
-# hangman server
+# solana spinners server
