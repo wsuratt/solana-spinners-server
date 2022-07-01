@@ -130,7 +130,7 @@ export async function updateNumSpins(userID: string): Promise<string>{
           let userKey = new PublicKey(userID);
           send(userKey, prizeMint, 1e-9);
 
-          resolve(winNum.toString());
+          resolve(prizeMint.toString());
         })
       }
       else {
