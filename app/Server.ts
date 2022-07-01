@@ -59,7 +59,7 @@ export async function addUser(ID: PublicKey): Promise<void>{
 
   if (exists > 0) return;
 
-  const text2 =`INSERT INTO users (id, num_spins) VALUES($1, 1)`;
+  const text2 =`INSERT INTO users (id, num_spins) VALUES($1, 0)`;
   const values2 = [ID];
   await pool.query(text2, values2, (error: any, results: { rows: any; }) => {
     if (error) {
