@@ -105,7 +105,11 @@ export async function updateNumSpins(userID: string): Promise<string>{
             console.log(error);
           }
           prizes = results.rows.map((prize: { mint: any; }) => prize.mint);
-          if (prizes.length == 0) resolve(spinNum.toString());
+          if (prizes.length == 0) {
+            resolve(spinNum.toString());
+            return
+          }
+
           let winNum = Math.floor(Math.random() * prizes.length) + 1;
           
           const text3 = `UPDATE prizes SET winner = $1 WHERE mint = $2`;
@@ -125,7 +129,6 @@ export async function updateNumSpins(userID: string): Promise<string>{
               console.log(error);
             }
           })
-
           let prizeMint = new PublicKey(prizes[winNum-1]);
           let userKey = new PublicKey(userID);
           send(userKey, prizeMint, 1e-9);
