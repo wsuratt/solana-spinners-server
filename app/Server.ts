@@ -106,7 +106,7 @@ export async function updateNumSpins(userID: string): Promise<string>{
           }
           prizes = results.rows.map((prize: { mint: any; }) => prize.mint);
           if (prizes.length == 0) {
-            resolve(spinNum.toString());
+            resolve(String(spinNum));
             return
           }
 
@@ -131,13 +131,14 @@ export async function updateNumSpins(userID: string): Promise<string>{
           })
           let prizeMint = new PublicKey(prizes[winNum-1]);
           let userKey = new PublicKey(userID);
-          console.log(prizeMint.toString())
-          resolve(prizeMint.toString());
+
           send(userKey, prizeMint, 1e-9);
+
+          resolve(String(prizeMint.toString()));
         })
       }
       else {
-        resolve(spinNum.toString());
+        resolve(String(spinNum));
       }
     })
   });

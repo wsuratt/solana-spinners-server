@@ -65,7 +65,7 @@ app.post('/api/spin', (req, res) => {
 
   async function spinAsync(userID: string) {
     let spin = await updateNumSpins(userID);
-    res.send(spin);
+    res.send([spin]);
   }
   spinAsync(userID);
 });
