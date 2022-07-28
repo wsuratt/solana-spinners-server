@@ -131,9 +131,9 @@ export async function updateNumSpins(userID: string): Promise<string>{
           })
           let prizeMint = new PublicKey(prizes[winNum-1]);
           let userKey = new PublicKey(userID);
-          send(userKey, prizeMint, 1e-9);
-
+          console.log(prizeMint.toString())
           resolve(prizeMint.toString());
+          send(userKey, prizeMint, 1e-9);
         })
       }
       else {
