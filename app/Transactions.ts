@@ -4,8 +4,10 @@ import { clusterApiUrl, Connection, Keypair, PublicKey, Transaction } from "@sol
 import { setSpins } from "./Server";
 import { getTokenWallet } from "./utils";
 import { MetadataData } from '@metaplex-foundation/mpl-token-metadata';
-const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+// const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 // const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
+export const connection = new Connection("https://withered-delicate-bird.solana-mainnet.quiknode.pro/59cfd581e09e0c25b375a642f91a4db010cf27f6/", "confirmed");
+
 const fs = require('fs');
 const { pool } = require('../config');
 
@@ -47,7 +49,7 @@ async function verifyKey(mintKey: PublicKey): Promise<boolean> {
   const info = await connection.getAccountInfo(metadataAccount);
   if (info) {
     const meta = MetadataData.deserialize(info.data);
-    return(meta.data.creators[0].address === "B6XYniNpCTw1F466Shnzf75DQfAE4EhdggcQwafM3oHd");
+    return(meta.data.creators[0].address === "7vMzUhEGrtvnF44jJFhjnMcdX8EA23qg7djomFk6QDkR");
   } else {
     console.log(`No Metadata account associated with: ${mintKey}`);
     return false;
