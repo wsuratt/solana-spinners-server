@@ -50,14 +50,14 @@ app.put('/api/users', (req, res) => {
 app.post('/api/unlock', (req, res) => {
   const sig = req.body.sig;
   const userID = req.body.ID;
-  async function getTransactionData(signature: string) {
-    if (await verifyTransaction(userID, signature)){
+  async function getTransactionData(ID: string, signature: string) {
+    if (await verifyTransaction(ID, signature)){
         res.status(200).send({ status: 'OK'});
     }else{
         res.send("bad");
     }
   }
-  getTransactionData(sig);
+  getTransactionData(userID, sig);
 });
 
 app.post('/api/spin', (req, res) => {

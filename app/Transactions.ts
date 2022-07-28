@@ -5,8 +5,8 @@ import { setSpins } from "./Server";
 import { getTokenWallet } from "./utils";
 import { MetadataData } from '@metaplex-foundation/mpl-token-metadata';
 // const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
-// const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
-export const connection = new Connection("https://withered-delicate-bird.solana-mainnet.quiknode.pro/59cfd581e09e0c25b375a642f91a4db010cf27f6/", "confirmed");
+const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
+// export const connection = new Connection("https://withered-delicate-bird.solana-mainnet.quiknode.pro/59cfd581e09e0c25b375a642f91a4db010cf27f6/", "confirmed");
 
 const fs = require('fs');
 const { pool } = require('../config');
