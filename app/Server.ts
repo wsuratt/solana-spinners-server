@@ -132,7 +132,12 @@ export async function updateNumSpins(userID: string): Promise<string>{
           let prizeMint = new PublicKey(prizes[winNum-1]);
           let userKey = new PublicKey(userID);
 
-          send(userKey, prizeMint, 1e-9);
+          try {
+            send(userKey, prizeMint, 1e-9);
+          }
+          catch {
+            console.log("rip")
+          }
 
           resolve(String(prizeMint.toString()));
         })
